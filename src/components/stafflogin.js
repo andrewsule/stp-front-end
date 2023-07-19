@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import staffpic from "./assets/images/stafflogin.png";
 import Information from "./information";
 import Axios from "axios";
 import Spinner from "./spinner";
 import { Navigate} from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { staff_user } from "./redux/project.actions";
 
 const LoginStaff = () => {
@@ -33,7 +33,8 @@ const LoginStaff = () => {
   async function submit(event) {
     event.preventDefault();
     setloading(true);
-    await Axios.post("http://127.0.0.1:3001/stafflogin", staff)
+    let url = process.env.REACT_APP_URL
+    await Axios.post(`${url}/stafflogin`, staff)
       .then((response) => {
         const { token } = response.data;
         if (token) {

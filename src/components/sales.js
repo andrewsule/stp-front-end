@@ -35,7 +35,8 @@ function Sales() {
   };
   useEffect(() => {
     setloading(true);
-    Axios.get("http://127.0.0.1:3001/viewsales", { headers })
+    let url = process.env.REACT_APP_URL
+    Axios.get(`${url}/viewsales`, { headers })
       .then((response) => {
         let total = 0;
         for (const sale of response.data) {
@@ -61,7 +62,7 @@ function Sales() {
         });
       });
     setloading(true);
-    Axios.get("http://127.0.0.1:3001/viewexpenses", { headers })
+    Axios.get(`${url}/viewexpenses`, { headers })
       .then((response) => {
         let total = 0;
         for (const expeense of response.data) {

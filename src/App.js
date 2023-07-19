@@ -5,7 +5,7 @@ import {
   Routes,
 } from "react-router-dom";
 import Protected from "./components/protected";
-import React, { useEffect, useState } from "react";
+import React, { useEffect,} from "react";
 import Employees from "./components/employes";
 import Expenses from "./components/expenses";
 import AddExpense from "./components/addexpense";
@@ -28,6 +28,7 @@ import { store } from "./components/redux/store";
 import Axios from "axios";
 import { admin_user, staff_user } from "./components/redux/project.actions";
 
+
 const App = () => {
   let dispach = useDispatch();
 
@@ -35,7 +36,8 @@ const App = () => {
     const headers_staff = {
       "x-auth-token": window.localStorage.getItem("staff_token"),
     };
-    Axios.get("http://127.0.0.1:3001/user_staff", { headers: headers_staff })
+    let url = process.env.REACT_APP_URL
+    Axios.get(`${url}/user_staff`, { headers: headers_staff })
       .then((response) => {
         dispach(staff_user({ data: response.data.user, authenticated: true }));
       })
@@ -47,20 +49,20 @@ const App = () => {
       "x-auth-token": window.localStorage.getItem("admin_token"),
     };
 
-    Axios.get("http://127.0.0.1:3001/user_admin", { headers: headers_admin })
+    Axios.get(`${url}/user_admin`, { headers: headers_admin })
       .then((response) => {
         dispach(admin_user({ data: response.data.user, authenticated: true }));
       })
       .catch((errors) => {
         console.error(errors);
       });
-
   }, []);
 
 
   return (
     <React.Fragment>
       <Router>
+      {console.log( process.env.REACT_APP_URL)}
         <Provider store={store}>
           <NavbarLogin />
         </Provider>

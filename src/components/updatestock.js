@@ -20,7 +20,8 @@ function UpdateStock() {
 
   useEffect(() => {
     setloading(true);
-    Axios.get("http://127.0.0.1:3001/viewstock",{headers})
+    let url = process.env.REACT_APP_URL
+    Axios.get(`${url}/viewstock`,{headers})
       .then((response) => {
         setStock({
           ...stock,
@@ -38,7 +39,7 @@ function UpdateStock() {
   }, []);
 
   const selecting = async (productID) => {
-    let dataurl = `http://127.0.0.1:3001/update/${productID}`;
+    let dataurl = `${process.env.REACT_APP_URL}/update/${productID}`;
 
     await Axios.get(dataurl,{headers})
       .then((response) => {
@@ -72,7 +73,7 @@ function UpdateStock() {
   const updateSubmit = async (event) => {
     event.preventDefault();
     setloading(true);
-    let dataurl = `http://127.0.0.1:3001/update/${stock.id}`;
+    let dataurl = `${process.env.REACT_APP_URL}/update/${stock.id}`;
     await Axios.put(dataurl, stock.product)
       .then((response) => {
         setalert_message({

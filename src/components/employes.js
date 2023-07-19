@@ -31,7 +31,8 @@ function Employees() {
 
   useEffect(() => {
     setloading(true);
-    Axios.get("http://127.0.0.1:3001/viewemployees",{headers})
+    let url = process.env.REACT_APP_URL
+    Axios.get(`${url}/viewemployees`,{headers})
       .then((response) => {
         setEmployees({
           ...employees,

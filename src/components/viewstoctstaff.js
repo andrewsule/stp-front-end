@@ -17,8 +17,9 @@ function ViewStockStaff() {
 
   useEffect(() => {
     setloading(true);
+    let url = process.env.REACT_APP_URL
     axios
-      .get("http://127.0.0.1:3001/viewstock",{headers})
+      .get(`${url}/viewstock`,{headers})
       .then((response) => {
         setStock({
           ...stock,

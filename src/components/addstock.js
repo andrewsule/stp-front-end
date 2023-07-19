@@ -43,7 +43,8 @@ const AddStock = () => {
   let submitStock = async (event) => {
     event.preventDefault();
     setloading(true);
-    await Axios.post("http://127.0.0.1:3001/addstock", stock,{headers})
+    let url = process.env.REACT_APP_URL
+    await Axios.post(`${url}/addstock`, stock,{headers})
       .then((response) => {
         if (response.data === "present") {
           setloading(false);

@@ -21,7 +21,8 @@ function UpdateEmployees(props) {
 
   useEffect(() => {
     setloading(true);
-    Axios.get("http://127.0.0.1:3001/viewemployees",{headers})
+    let url = process.env.REACT_APP_URL
+    Axios.get(`${url}/viewemployees`,{headers})
       .then((response) => {
         setEmployees({
           ...employees,
@@ -107,7 +108,8 @@ function UpdateEmployees(props) {
   const updateSubmit = async (event) => {
     event.preventDefault();
     setloading(true);
-    let dataurl = `http://127.0.0.1:3001/update_employee/${employees.employee._id}`;
+    let url = process.env.REACT_APP_URL
+    let dataurl = `${url}/update_employee/${employees.employee._id}`;
     await Axios.put(dataurl, employees.employee,{headers})
       .then((response) => {
         setalert_message({

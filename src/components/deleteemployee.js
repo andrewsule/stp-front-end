@@ -30,8 +30,9 @@ function DeleteEmployee() {
   let delete_employee = async (event) => {
     event.preventDefault();
     setloading(true);
+    let url = process.env.REACT_APP_URL
     await axios
-      .delete(`http://127.0.0.1:3001/delete/${id}`,{headers})
+      .delete(`${url}/delete/${id}`,{headers})
       .then((response) => {
         setloading(false);
         setalert_message({

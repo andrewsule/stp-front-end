@@ -17,8 +17,9 @@ function Expenses() {
 
   useEffect(() => {
     setloading(true);
+    let url = process.env.REACT_APP_URL
     axios
-      .get("http://127.0.0.1:3001/viewexpenses",{headers})
+      .get(`${url}/viewexpenses`,{headers})
       .then((response) => {
         setexpense({
           ...expense,

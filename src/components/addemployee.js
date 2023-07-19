@@ -71,7 +71,8 @@ function  AddEmployee() {
   let  submitemployee =  async (event) => {
     event.preventDefault();
     setloading(true)
-    await Axios.post("http://127.0.0.1:3001/addemployee",  addemployee,{headers})
+    let url = process.env.REACT_APP_URL
+    await Axios.post(`${url}/addemployee`,  addemployee,{headers})
       .then((response) => {
         setloading(false)
         setalert_message({

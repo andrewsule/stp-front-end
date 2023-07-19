@@ -32,8 +32,9 @@ const LoginAdministrator = () => {
   async function submit(event) {
     event.preventDefault();
     setloading(true);
+    let url = process.env.REACT_APP_URL
     await Axios.post(
-      "http://127.0.0.1:3001/administratorlogin",
+      `${url}/administratorlogin`,
       administrator
     )
       .then((response) => {

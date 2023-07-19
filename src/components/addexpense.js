@@ -33,7 +33,8 @@ function AddExpense() {
   let submitexpense = async (event) => {
     event.preventDefault();
     setloading(true);
-    await Axios.post("http://127.0.0.1:3001/addexpense", addexpense,{headers})
+    let url = process.env.REACT_APP_URL
+    await Axios.post(`${url}/addexpense`, addexpense,{headers})
       .then((response) => {
         setloading(false);
         setalert_message({

@@ -48,7 +48,8 @@ function Selling() {
 
   useEffect(() => {
     setloading(true);
-    Axios.get("http://127.0.0.1:3001/viewstock", { headers })
+    let url = process.env.REACT_APP_URL
+    Axios.get(`${url}/viewstock`, { headers })
       .then((response) => {
         let display = response.data.slice();
         setselling((prevSell) => ({
@@ -81,8 +82,8 @@ function Selling() {
       };
     });
     let allData = [data, customer];
-
-    await Axios.post("http://127.0.0.1:3001/addingsales", allData, {
+    let url = process.env.REACT_APP_URL
+    await Axios.post(`${url}/addingsales`, allData, {
       headers,
     })
       .then((response) => {
@@ -196,7 +197,7 @@ function Selling() {
 
   const selecting = async (productID) => {
     setloading(true);
-    let dataurl = `http://127.0.0.1:3001/update/${productID}`;
+    let dataurl = `${process.env.REACT_APP_URL}/update/${productID}`;
     try {
       const response = await Axios.get(dataurl, { headers });
       const newItem = response.data;
