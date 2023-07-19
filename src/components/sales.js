@@ -118,12 +118,11 @@ function Sales() {
     const total = filteredSales.reduce((total, sale) => {
       return total + sale.selling_price;
     }, 0);
-
+    console.log(total)
 
     setSales({
       ...sales,
       filteredsales: filteredSales,
-      total: total,
     });
 
     const filteredbuying_price = sales.sales.filter((sale) => {
@@ -139,6 +138,7 @@ function Sales() {
       ...sales,
       filteredsales: filteredbuying_price,
       totalbuying: totalbuying,
+      total: total,
     });
 
     const filteredexpense = expense.data.filter((expense) => {
