@@ -17,6 +17,7 @@
 .add_opacity{
   background: rgba(0,0,0,0.6);
   height: 100vh;
+  overflow: auto;
 }
 .addwrapper{
   z-index: 2;
