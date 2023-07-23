@@ -9,6 +9,7 @@ import { staff_user } from "./redux/project.actions";
 
 const LoginStaff = () => {
   let dispach = useDispatch();
+
   const [loading, setloading] = useState(false);
   let [staff, setStaff] = useState({
     id: "",
@@ -20,7 +21,7 @@ const LoginStaff = () => {
       ...staff,
       [event.target.name]: event.target.value,
     });
-  };
+  }
 
   let [message, setmessage] = useState("");
   let [staffl, setstaffl] = useState({
@@ -28,26 +29,22 @@ const LoginStaff = () => {
     authenticated: false,
   });
 
-  
-
   async function submit(event) {
     event.preventDefault();
     setloading(true);
     let url = process.env.REACT_APP_URL
-    await Axios.post(`${url}/stafflogin`, staff)
+    await Axios.post(`${url}/stafflogin`,staff)
       .then((response) => {
         const { token } = response.data;
         if (token) {
           setloading(false);
           window.localStorage.setItem("staff_token", token);
-          dispach(
-            staff_user({ data: response.data.user, authenticated: true })
-          );
+          dispach(staff_user({data:response.data.user,authenticated:true}))
           setstaffl({
             ...staffl,
-            data: response.data.user,
-            authenticated: true,
-          });
+            data:response.data.user
+            ,authenticated: true
+          })
         }
         setloading(false);
       })
@@ -57,9 +54,11 @@ const LoginStaff = () => {
         console.error(errors);
       });
   }
+
   return (
     <React.Fragment>
-      {staffl.authenticated && <Navigate to={"/sell_item"} />}
+      {staffl.authenticated && <Navigate to={'/sell_item'} />}
+      {console.log(staffl.authenticated)}
       <div className="wrapper-login  justify-content-center">
         <div className="add_opacity">
           <div className="container ">

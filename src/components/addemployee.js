@@ -112,7 +112,7 @@ function  AddEmployee() {
           <div className="col-12">
             <h4 style={{ color: "red" }}>Enter Employees Details</h4>
             <form className=" form-group " onSubmit={submitemployee}>
-              <table className="table table-striped">
+              <table className="table table-striped table-responsive-sm">
                 <tr>
                   <td>
                     <label>First Name</label>

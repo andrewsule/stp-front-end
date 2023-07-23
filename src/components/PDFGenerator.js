@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import logo from "./assets/images/logo2.png";
 import ReactToPrint from "react-to-print";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Create Document Component
 const PDFGenerator = (props) => {
   const componentRef = useRef(); 
+  let navigate = useNavigate()
 
 let go_back = ()=>{
-  window.location.reload();
+  navigate('/view_stock')
 }
   return (
     <React.Fragment>

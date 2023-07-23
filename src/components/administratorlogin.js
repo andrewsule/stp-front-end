@@ -7,7 +7,6 @@ import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { admin_user } from "./redux/project.actions";
 
-
 const LoginAdministrator = () => {
   let dispach = useDispatch()
   const [loading, setloading] = useState(false);
@@ -16,7 +15,7 @@ const LoginAdministrator = () => {
     password: "",
   });
 
-  let getValuesAdministrator = (event) => {
+let getValuesAdministrator = (event) => {
     setAdministrator({
       ...administrator,
       [event.target.name]: event.target.value,
@@ -33,10 +32,7 @@ const LoginAdministrator = () => {
     event.preventDefault();
     setloading(true);
     let url = process.env.REACT_APP_URL
-    await Axios.post(
-      `${url}/administratorlogin`,
-      administrator
-    )
+    await Axios.post(`${url}/administratorlogin`,administrator)
       .then((response) => {
         const { token } = response.data;
         if (token) {
@@ -61,6 +57,7 @@ const LoginAdministrator = () => {
   return (
     <React.Fragment>
     {admin.authenticated && <Navigate to={"/sales"}/>}
+    {console.log(admin.authenticated)}
       <div className="wrapper-login  justify-content-center ">
         <div className="add_opacity">
           <div className="container">

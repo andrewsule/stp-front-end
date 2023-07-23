@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useLocation} from "react-router-dom";
+import { Link, Navigate,useNavigate} from "react-router-dom";
 import { admin_user, staff_user } from "./redux/project.actions";
 
 let NavbarLogin = () => {
@@ -9,6 +9,7 @@ let NavbarLogin = () => {
  
 
   let dispatch = useDispatch();
+  let navigate = useNavigate()
 
   let admin = useSelector((state) => {
     return state["admin"];
@@ -24,11 +25,9 @@ let NavbarLogin = () => {
     setBack(true);
     window.localStorage.clear("admin_token");
     window.localStorage.clear("staff_token");
-
     dispatch(staff_user({ data: null, authenticated: false }));
     dispatch(admin_user({ data: null, authenticated: false }));
-
-    window.location.reload();
+    navigate('/login/staff')
   };
   useEffect(()=>{
     

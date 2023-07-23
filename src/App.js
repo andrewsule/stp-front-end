@@ -1,9 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import {BrowserRouter as Router,Route,Routes,} from "react-router-dom";
 import Protected from "./components/protected";
 import React, { useEffect,} from "react";
 import Employees from "./components/employes";
@@ -62,7 +58,6 @@ const App = () => {
   return (
     <React.Fragment>
       <Router>
-      {console.log(process.env.REACT_APP_URL)}
         <Provider store={store}>
           <NavbarLogin />
         </Provider>
