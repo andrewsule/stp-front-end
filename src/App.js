@@ -62,7 +62,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Router>
-      {console.log( process.env.REACT_APP_URL)}
+      {console.log(process.env.REACT_APP_URL)}
         <Provider store={store}>
           <NavbarLogin />
         </Provider>
@@ -120,6 +120,7 @@ const App = () => {
               <Route path="/sell_item" element={<Selling />} />
 
               <Route path="/update_stock" element={<UpdateStock />} />
+              <Route path="*" element={<h4>Page not found</h4>} />
             </Route>
           </Routes>
         </div>
