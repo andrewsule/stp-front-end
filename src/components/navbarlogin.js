@@ -21,7 +21,8 @@ let NavbarLogin = () => {
 
   let [back, setBack] = useState(false);
 
-  let logout = () => {
+  let logout = (event) => {
+    event.preventDefault()
     setBack(true);
     window.localStorage.clear("admin_token");
     window.localStorage.clear("staff_token");

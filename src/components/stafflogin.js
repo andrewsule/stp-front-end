@@ -58,7 +58,6 @@ const LoginStaff = () => {
   return (
     <React.Fragment>
       {staffl.authenticated && <Navigate to={'/sell_item'} />}
-      {console.log(staffl.authenticated)}
       <div className="wrapper-login  justify-content-center">
         <div className="add_opacity">
           <div className="container ">
