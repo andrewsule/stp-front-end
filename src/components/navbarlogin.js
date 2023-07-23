@@ -28,7 +28,7 @@ let NavbarLogin = () => {
     window.localStorage.clear("staff_token");
     dispatch(staff_user({ data: null, authenticated: false }));
     dispatch(admin_user({ data: null, authenticated: false }));
-    navigate('/login/staff')
+    navigate('/')
   };
   useEffect(()=>{
     
