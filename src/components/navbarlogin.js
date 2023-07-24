@@ -19,17 +19,28 @@ let NavbarLogin = () => {
     return state["staff"];
   });
 
-  let [back, setBack] = useState(false);
+  let [backadmin, setBackadmin] = useState(false);
+  let [backstaff, setBackstff] = useState(false);
 
-  let logout = (event) => {
+  let logoutadmin = (event) => {
     event.preventDefault()
-    setBack(true);
+    setBackadmin(true);
     window.localStorage.clear("admin_token");
-    window.localStorage.clear("staff_token");
-    dispatch(staff_user({ data: null, authenticated: false }));
     dispatch(admin_user({ data: null, authenticated: false }));
     navigate('/')
+    location.reload;
   };
+
+  let logoutstaff = (event) => {
+    event.preventDefault()
+    setBackstff(true);
+    window.localStorage.clear("staff_token");
+    dispatch(staff_user({ data: null, authenticated: false }));
+    navigate('/')
+    location.reload;
+  };
+
+
   useEffect(()=>{
     
   
@@ -76,7 +87,7 @@ let NavbarLogin = () => {
           )}
 
           {/*ADMINISTRATOR*/}
-          {back && <Navigate to={"/login/administrator"} />}
+          {backadmin && <Navigate to={"/login/administrator"} />}
           {admin.user.authenticated &&  (
             <ul className="navbar-nav ml-5">
               <li className="nav-item">
@@ -107,7 +118,7 @@ let NavbarLogin = () => {
             </ul>
           )}
           {/*STAFF*/}
-          {back && <Navigate to={"/login/staff"} />}
+          {backstaff && <Navigate to={"/login/staff"} />}
           {staff.user.authenticated && (
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
@@ -153,7 +164,7 @@ let NavbarLogin = () => {
               </li>
               
               <li className="nav-item">
-                <Link to="" className="nav-link" onClick={logout}>
+                <Link to="" className="nav-link" onClick={logoutadmin}>
                   {" "}
                   Log out{" "}
                 </Link>
@@ -179,7 +190,7 @@ let NavbarLogin = () => {
               </li>
 
               <li className="nav-item">
-                <Link to="" className="nav-link" onClick={logout}>
+                <Link to="" className="nav-link" onClick={logoutstaff}>
                   {" "}
                   Log out{" "}
                 </Link>
