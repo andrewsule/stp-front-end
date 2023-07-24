@@ -26,18 +26,20 @@ let NavbarLogin = () => {
     event.preventDefault()
     setBackadmin(true);
     window.localStorage.clear("admin_token");
+    window.location.reload();
     dispatch(admin_user({ data: null, authenticated: false }));
     navigate('/')
-    location.reload;
+   
   };
 
   let logoutstaff = (event) => {
     event.preventDefault()
     setBackstff(true);
     window.localStorage.clear("staff_token");
+    window.location.reload();
     dispatch(staff_user({ data: null, authenticated: false }));
     navigate('/')
-    location.reload;
+    
   };
 
 

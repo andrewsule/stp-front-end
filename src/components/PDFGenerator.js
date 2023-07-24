@@ -7,7 +7,7 @@ const PDFGenerator = (props) => {
   const componentRef = useRef(); 
 
 let go_back = ()=>{
-  location.reload()
+  window.location.reload()
 }
   return (
     <React.Fragment>
