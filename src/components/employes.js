@@ -129,7 +129,7 @@ function Employees() {
                         <td>{emp.nof_contact}</td>
                       </tr>
                     ))
-                  : employees.employees.map((emp) => (
+                  :employees.employees.map((emp) => (
                       <tr key={emp._id}>
                         <td>{emp.uid}</td>
                         <td>{emp.first_name}</td>

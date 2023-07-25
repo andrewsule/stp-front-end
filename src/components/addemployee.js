@@ -4,11 +4,13 @@ import Success from "./success";
 import Failure from "./failure";
 import Warning from "./warning";
 import Spinner from "./spinner";
+import imagespinner from "./assets/images/spinner_image.gif"
 
 function  AddEmployee() {
   const headers = {
     'x-auth-token': window.localStorage.getItem("admin_token")
   }
+  const [uploadimage,setuploadimage]=useState(false)
   const [loading,setloading] = useState(false)
   let [addemployee, setAddemloyee] = useState({
     first_name: "",
@@ -45,14 +47,14 @@ function  AddEmployee() {
     });
   };
   let handleImageChange = async (event) => {
+    setuploadimage(true)
     let imagefile = event.target.files[0];
-    setloading(true)
     let uimage = await base64(imagefile);
     setAddemloyee({
       ...addemployee,
       image: await uimage,
     });
-    setloading(false)
+    setuploadimage(false)
   };
   let base64 = (imagefile) => {
     return new Promise((resolve, reject) => {
@@ -233,10 +235,13 @@ function  AddEmployee() {
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label>Picture</label>
-                    <br />
-                    <input type="file" onChange={handleImageChange} />
+                  <td className=" p-0 ">
+                    <label >Picture</label>
+                    <input className="form-control p-0 form-control-sm" 
+                    type="file" 
+                    onChange={handleImageChange} />
+                    {uploadimage&&<img src={imagespinner} 
+                    required/>}
                   </td>
                 </tr>
               </table>

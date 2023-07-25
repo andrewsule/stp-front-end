@@ -23,6 +23,7 @@ import { Provider, useDispatch,} from "react-redux";
 import { store } from "./components/redux/store";
 import Axios from "axios";
 import { admin_user, staff_user } from "./components/redux/project.actions";
+import NullPage from "./components/nullpage";
 
 
 const App = () => {
@@ -115,7 +116,7 @@ const App = () => {
               <Route path="/sell_item" element={<Selling />} />
 
               <Route path="/update_stock" element={<UpdateStock />} />
-              <Route path="*" element={<h4>Page not found</h4>} />
+              <Route path="*" element={<NullPage/>} />
             </Route>
           </Routes>
         </div>
