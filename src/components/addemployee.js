@@ -177,7 +177,7 @@ function  AddEmployee() {
                       onChange={getValues}
                       required
                     >
-                      <option value="">Select expense type</option>
+                      <option value="">Select Position</option>
                       <option value="Administrator">Administrator</option>
                       <option value="Staff">Staff</option>
                     </select>
